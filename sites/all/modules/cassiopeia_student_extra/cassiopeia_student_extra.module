@@ -1,10 +1,5 @@
 <?php
-
-/**
- * Include file chứa các hàm xử lý.
- */
 module_load_include('inc', 'cassiopeia_student_extra', 'cassiopeia_student_extra');
-
 /**
  * Implements hook_menu().
  */
@@ -26,8 +21,8 @@ function cassiopeia_student_extra_menu() {
 /**
  * Implements hook_init().
  */
-function cassiopeia_student_extra_init() {
+// function cassiopeia_student_extra_init() {
 
-  drupal_add_css(drupal_get_path('module', 'cassiopeia_student_extra') . '/css/student_extra.css');
-  drupal_add_js(drupal_get_path('module', 'cassiopeia_student_extra') . '/js/student_extra.js');
-}
+//   drupal_add_css(drupal_get_path('module', 'cassiopeia_student_extra') . '/css/student_extra.css');
+//   drupal_add_js(drupal_get_path('module', 'cassiopeia_student_extra') . '/js/student_extra.js');
+// }

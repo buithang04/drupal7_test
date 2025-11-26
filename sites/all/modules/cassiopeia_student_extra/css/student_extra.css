@@ -1,16 +1,14 @@
-/* Wrapper chính */
+
 .students-extra-wrapper {
   margin: 20px;
   font-family: Arial, sans-serif;
 }
 
-/* Tiêu đề */
 .students-extra-wrapper h1 {
   margin-bottom: 20px;
   font-size: 24px;
 }
 
-/* Bảng chi tiết student_extra */
 .student-extra-table {
   width: 100%;
   max-width: 600px;
@@ -32,7 +30,6 @@
   font-weight: bold;
 }
 
-/* Modal căn giữa */
 #student-extra-modal.in {
   display: flex !important;
   align-items: center;
@@ -47,7 +44,7 @@
 
 /* Modal header */
 .modal-header {
-  background-color: #f7f7f7;
+  background-color: #ffffff;
   padding: 10px 15px;
   border-bottom: 1px solid #ddd;
 }
@@ -82,7 +79,6 @@
   box-sizing: border-box;
 }
 
-/* Nút submit */
 .student-extra-form-wrapper .form-buttons {
   margin-top: 15px;
   text-align: right;
@@ -96,6 +92,35 @@
   border-radius: 4px;
   cursor: pointer;
 }
+.btn-edit-student-extra {
+  background-color: #1eb04b;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  transition: background-color 0.25s ease, 
+              transform 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+.btn-edit-student-extra:hover {
+  background-color: #17a142;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(30, 176, 75, 0.4);
+}
+
+.btn-edit-student-extra:active {
+  transform: scale(0.95);
+}
+
 
 .student-extra-form-wrapper .form-buttons input[type="submit"]:hover {
   background-color: #0b5ed7;

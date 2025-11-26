@@ -1,3 +1,9 @@
+<?php
+
+drupal_add_css(drupal_get_path('module', 'cassiopeia_student_extra') . '/css/student_extra.css');
+drupal_add_js(drupal_get_path('module', 'cassiopeia_student_extra') . '/js/student_extra.js');
+?>
+
 <div class="students-extra-wrapper">
   <h1>Thông tin sinh viên</h1>
 

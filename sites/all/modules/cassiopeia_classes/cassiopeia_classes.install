@@ -1,0 +1,48 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function cassiopeia_classes_schema() {
+  $schema = [];
+
+  $schema['classes'] = [
+    'description' => 'Stores class information.',
+    'fields' => [
+      'class_id' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'class_name' => [
+        'type' => 'varchar',
+        'length' => 100,
+        'not null' => TRUE,
+      ],
+      'teacher_name' => [
+        'type' => 'varchar',
+        'length' => 100,
+        'not null' => FALSE,
+      ],
+    ],
+    'primary key' => ['class_id'],
+  ];
+
+  return $schema;
+}
+
+function cassiopeia_classes_update_6() {
+  $schema = cassiopeia_classes_schema();
+
+  $_transaction = db_transaction();
+  try {
+    if (!db_table_exists('classes')) {
+      db_create_table('classes', $schema['classes']);
+    }
+  }
+  catch (Exception $e) {
+    watchdog('cassiopeia_classes', 'Update 3 failed: @message', ['@message' => $e->getMessage()], WATCHDOG_ERROR);
+    $_transaction->rollback();
+    throw $e; 
+  }
+}

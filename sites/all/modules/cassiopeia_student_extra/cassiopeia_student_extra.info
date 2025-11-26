@@ -1,0 +1,6 @@
+name = Cassiopeia add photo
+description = Module mở rộng module học sinh có thêm ảnh
+package = Cassiopeia
+core = 7.x
+version = "7.x-3.0-rc5"
+core = "7.x"

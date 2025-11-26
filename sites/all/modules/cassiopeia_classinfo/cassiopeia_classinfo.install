@@ -1,0 +1,90 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function cassiopeia_classinfo_schema() {
+  $schema = [];
+
+  $schema['class_full_info'] = [
+  'description' => 'Stores class and student combined information.',
+  'fields' => [
+    'id' => [
+      'type' => 'serial',
+      'unsigned' => TRUE,
+      'not null' => TRUE,
+    ],
+    'class_id' => [
+      'type' => 'int',
+      'unsigned' => TRUE,
+      'not null' => TRUE,
+    ],
+    'class_name' => [
+      'type' => 'varchar',
+      'length' => 255,
+      'not null' => FALSE,
+    ],
+    'teacher_name' => [
+      'type' => 'varchar',
+      'length' => 255,
+      'not null' => FALSE,
+    ],
+    'student_id' => [
+      'type' => 'int',
+      'unsigned' => TRUE,
+      'not null' => FALSE,
+      'default' => NULL,
+    ],
+    'student_name' => [
+      'type' => 'varchar',
+      'length' => 255,
+      'not null' => FALSE,
+      'default' => NULL,
+    ],
+    'gender' => [
+      'type' => 'varchar',
+      'length' => 50,
+      'not null' => FALSE,
+      'default' => NULL,
+    ],
+    'birthdate' => [
+      'type' => 'varchar',
+      'length' => 20,
+      'not null' => FALSE,
+      'default' => NULL,
+    ],
+    'created_at' => [
+      'type' => 'varchar',
+      'length' => 20,
+      'not null' => FALSE,
+      'default' => NULL,
+    ],
+  ],
+  'primary key' => ['id'],
+  'indexes' => [
+    'class_id' => ['class_id'],
+    'student_id' => ['student_id'],
+  ],
+];
+
+
+  return $schema;
+}
+
+  function cassiopeia_classinfo_update_4() {
+  $schema = cassiopeia_classinfo_schema();
+
+  $_transaction = db_transaction();
+  try {
+
+    if (!db_table_exists('class_full_info')) {
+      db_create_table('class_full_info', $schema['class_full_info']);
+    }
+  }
+  catch (Exception $e) {
+    watchdog('cassiopeia_classinfo', 'Update 4 failed: @message', ['@message' => $e->getMessage()], WATCHDOG_ERROR);
+    $_transaction->rollback();
+    throw $e;
+  }
+}
+

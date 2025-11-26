@@ -1,0 +1,65 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function cassiopeia_students_schema() {
+  $schema = [];
+
+  $schema['students'] = [
+    'description' => 'Stores student information.',
+    'fields' => [
+      'student_id' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'student_name' => [
+        'type' => 'varchar',
+        'length' => 100,
+        'not null' => TRUE,
+      ],
+      'gender' => [
+        'type' => 'varchar',
+        'length' => 10,
+        'not null' => TRUE,
+      ],
+      'birthdate' => [
+        'type' => 'varchar',
+        'length' => 10,
+        'not null' => FALSE,
+        'default' => NULL,
+      ],
+      'class_id' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ],
+    ],
+    'primary key' => ['student_id'],
+    'indexes' => [
+      'class_id' => ['class_id'],
+    ],
+  ];
+
+  return $schema;
+}
+
+function cassiopeia_students_update_3() {
+  $schema = cassiopeia_students_schema();
+
+  $_transaction = db_transaction();
+  try {
+
+    if (!db_table_exists('students')) {
+      db_create_table('students', $schema['students']);
+    }
+  }
+  catch (Exception $e) {
+    watchdog('cassiopeia_students', 'Update 3 failed: @message', ['@message' => $e->getMessage()], WATCHDOG_ERROR);
+    $_transaction->rollback();
+    throw $e; 
+  }
+
+}

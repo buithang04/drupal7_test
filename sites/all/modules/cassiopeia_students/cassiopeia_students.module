@@ -1,0 +1,45 @@
+<?php
+module_load_include('inc', 'cassiopeia_students', 'cassiopeia_students');
+function cassiopeia_students_menu() {
+  $items = array();
+
+  $items['quan-ly-sinhvien'] = array(
+    'title' => 'Quản lý sinh viên',
+    'page callback' => 'cassiopeia_students_list',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'cassiopeia_students.inc',
+  );
+  
+
+    $items['students/delete/%'] = array(
+    'title' => 'Delete sinh viên',
+    'page callback' => 'cassiopeia_students_delete',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'cassiopeia_students.inc',
+  );
+
+// $items['students/edit/%'] = array(
+//   'title' => 'Chỉnh sửa sinh viên',
+//   'page callback' => 'drupal_get_form',       
+//   'page arguments' => array('cassiopeia_student_form', 2),
+//   'access arguments' => array('access content'),
+//   'file' => 'cassiopeia_students.inc',
+//   'type' => MENU_CALLBACK,
+// );
+
+
+  return $items;
+}
+
+function cassiopeia_students_init() {
+    drupal_add_css(drupal_get_path('module', 'cassiopeia_students') . '/css/students.css');
+    drupal_add_js(drupal_get_path('module', 'cassiopeia_students') . '/js/students.js');
+}
+
+
+
+
+

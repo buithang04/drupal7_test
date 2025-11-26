@@ -1,0 +1,102 @@
+/* Wrapper chính */
+.students-extra-wrapper {
+  margin: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Tiêu đề */
+.students-extra-wrapper h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+/* Bảng chi tiết student_extra */
+.student-extra-table {
+  width: 100%;
+  max-width: 600px;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.student-extra-table th,
+.student-extra-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.student-extra-table th {
+  width: 150px;
+  background-color: #f7f7f7;
+  font-weight: bold;
+}
+
+/* Modal căn giữa */
+#student-extra-modal.in {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0 !important; 
+}
+
+.modal-dialog {
+  margin: auto !important;
+  max-width: 500px;
+}
+
+/* Modal header */
+.modal-header {
+  background-color: #f7f7f7;
+  padding: 10px 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.modal-header .close {
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* Form trong modal */
+.student-extra-form-wrapper {
+  padding: 10px 0;
+}
+
+.student-extra-form-wrapper .input-wrap {
+  margin-bottom: 15px;
+}
+
+.student-extra-form-wrapper label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.student-extra-form-wrapper input[type="text"],
+.student-extra-form-wrapper input[type="email"],
+.student-extra-form-wrapper input[type="file"] {
+  width: 100%;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Nút submit */
+.student-extra-form-wrapper .form-buttons {
+  margin-top: 15px;
+  text-align: right;
+}
+
+.student-extra-form-wrapper .form-buttons input[type="submit"] {
+  background-color: #0d6efd;
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.student-extra-form-wrapper .form-buttons input[type="submit"]:hover {
+  background-color: #0b5ed7;
+}

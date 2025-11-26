@@ -1,0 +1,25 @@
+<?php
+module_load_include('inc', 'cassiopeia_classinfo', 'cassiopeia_classinfo');
+function cassiopeia_classinfo_menu() {
+  $items = array();
+
+  $items['thong-tin-lop/%'] = [
+    'title' => 'Thông tin lớp',
+    'page callback' => 'cassiopeia_classinfo_page',
+    'page arguments' => [1],
+    'access arguments' => ['access content'],
+    'type' => MENU_CALLBACK,
+  ];
+  
+  return $items;
+}
+
+function cassiopeia_classinfo_init() {
+    drupal_add_css(drupal_get_path('module', 'cassiopeia_classinfo') . '/css/classinfo.css');
+    // drupal_add_js(drupal_get_path('module', 'cassiopeia_classinfo') . '/js/classinfo.js');
+}
+
+
+
+
+

@@ -1,0 +1,43 @@
+<?php
+function cassiopeia_classes_menu() {
+  $items = array();
+
+  $items['quan-ly-lop'] = array(
+    'title' => 'Quản lý lớp',
+    'page callback' => 'cassiopeia_classes_list',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'cassiopeia_classes.inc',
+  );
+  
+
+    $items['classes/delete/%'] = array(
+    'title' => 'Delete lớp',
+    'page callback' => 'cassiopeia_classes_delete',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'cassiopeia_classes.inc',
+  );
+
+$items['classes/edit/%'] = array(
+  'title' => 'Chỉnh sửa lớp',
+  'page callback' => 'drupal_get_form',       
+  'page arguments' => array('cassiopeia_class_form', 2),
+  'access arguments' => array('access content'),
+  'file' => 'cassiopeia_classes.inc',
+  'type' => MENU_CALLBACK,
+);
+
+
+  return $items;
+}
+
+function cassiopeia_classes_init() {
+    drupal_add_css(drupal_get_path('module', 'cassiopeia_classes') . '/css/classes.css');
+    drupal_add_js(drupal_get_path('module', 'cassiopeia_classes') . '/js/classes.js');
+}
+
+
+
+

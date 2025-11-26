@@ -1,0 +1,45 @@
+.classes-wrapper {
+  margin: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.classes-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.classes-table th, .classes-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.classes-table th {
+  background-color: #f4f4f4;
+  text-align: left;
+}
+
+.classes-table .btn-edit-classes, .btn-delete-classes {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.classes-table tbody tr td .btn-edit-classes:hover {
+  color: #007bff;
+}
+
+.classes-table .btn-delete-classes:hover {
+  color: #dc3545;
+}
+
+
+
+#addclass.in,
+#addclass-1.in,
+#modalConfirm.in {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+

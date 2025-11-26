@@ -1,0 +1,50 @@
+<?php
+
+function cassiopeia_test_menu() {
+  $items = array();
+
+  $items['cassiopeia-test-run'] = array(
+    'title' => 'Test hooks',
+    'page callback' => 'cassiopeia_test_run',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'cassiopeia_test.inc',
+  );
+
+   $items['test-form'] = array(
+    'title' => 'Test Form',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('cassiopeia_test_form2'),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'cassiopeia_test.inc',
+  );
+  
+  return $items;
+}
+
+function cassiopeia_test_theme($existing, $type, $theme, $path) {
+  return array(
+    'cassiopeia_test_form_theme' => array(
+      'render element' => 'form',
+      'template' => 'cassiopeia-test-form',
+      'path' => $path . '/templates',
+    ),
+  );
+}
+
+function cassiopeia_test_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'cassiopeia_test_form2') {
+    $form['#theme'] = array('cassiopeia_test_form_theme');
+  }
+}
+
+
+
+
+
+
+
+
+
+

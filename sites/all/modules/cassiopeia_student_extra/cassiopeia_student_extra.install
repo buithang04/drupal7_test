@@ -1,0 +1,94 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function cassiopeia_student_extra_schema() {
+  $schema = [];
+
+  $schema['student_extra'] = [
+    'description' => 'Stores additional student information.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'student_id' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'phone' => [
+        'type' => 'varchar',
+        'length' => 20,
+        'not null' => FALSE,
+      ],
+      'email' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ],
+      'address' => [
+        'type' => 'varchar',
+        'length' => 500,
+        'not null' => FALSE,
+      ],
+      'avatar_fid' => [
+        'type' => 'int',
+        'not null' => FALSE,
+      ],
+      'created' => [
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+      'changed' => [
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['id'],
+    'indexes' => [
+      'student_idx' => ['student_id'],
+    ],
+  ];
+
+
+
+
+
+  return $schema;
+}
+
+/**
+ * Update hook to create student_extra table.
+ */
+function cassiopeia_student_extra_update_3() {
+  $schema = cassiopeia_student_extra_schema();
+
+  $_transaction = db_transaction();
+  try {
+    if (!db_table_exists('student_extra')) {
+      db_create_table('student_extra', $schema['student_extra']);
+    }
+  }
+  catch (Exception $e) {
+    watchdog('cassiopeia_student_extra', 'Update 1 failed: @message', ['@message' => $e->getMessage()], WATCHDOG_ERROR);
+    $_transaction->rollback();
+    throw $e; 
+  }
+}
+function cassiopeia_student_extra_update_5() {
+  $fields = [
+    'father_name'  => ['type' => 'varchar', 'length' => 255],
+    'father_phone' => ['type' => 'varchar', 'length' => 20],
+    'mother_name'  => ['type' => 'varchar', 'length' => 255],
+    'mother_phone' => ['type' => 'varchar', 'length' => 20],
+  ];
+
+  foreach ($fields as $name => $spec) {
+    if (!db_field_exists('student_extra', $name)) {
+      db_add_field('student_extra', $name, $spec + ['not null' => FALSE]);
+    }
+  }
+}

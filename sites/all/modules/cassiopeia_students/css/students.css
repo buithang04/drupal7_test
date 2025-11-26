@@ -1,0 +1,76 @@
+
+.classes-wrapper {
+  margin: 20px;
+  font-family: Arial, sans-serif;
+}
+
+
+.classes-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.classes-table th,
+.classes-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.classes-table th {
+  background-color: #f7f7f7;
+  font-weight: bold;
+  text-align: left;
+}
+
+
+.btn-edit-student12,
+.btn-delete-student {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 5px;
+}
+
+.btn-edit-student12:hover {
+  color: #0d6efd;
+}
+
+.btn-delete-student:hover {
+  color: #dc3545;
+}
+
+
+.form-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+
+#addstudent.in,
+#addstudent-1.in,
+#modalConfirm.in {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0 !important; 
+}
+
+.modal-dialog {
+  margin: auto !important; 
+}
+
+
+.input-wrap {
+  margin-bottom: 15px;
+}
+
+.input-wrap label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+.input-wrap .form-group .form-inline{
+  display: contents;
+}

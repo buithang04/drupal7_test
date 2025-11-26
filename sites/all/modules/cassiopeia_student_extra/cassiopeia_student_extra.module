@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * Include file chứa các hàm xử lý.
+ */
+module_load_include('inc', 'cassiopeia_student_extra', 'cassiopeia_student_extra');
+
+/**
+ * Implements hook_menu().
+ */
+function cassiopeia_student_extra_menu() {
+  $items = array();
+
+  $items['thong-tin-ca-nhan/%'] = array(
+  'title' => 'Thông tin cá nhân',
+  'page callback' => 'cassiopeia_student_extra_list',
+  'page arguments' => array(1), 
+  'access arguments' => array('access content'), 
+  'type' => MENU_CALLBACK,
+  'file' => 'cassiopeia_student_extra.inc',
+);
+
+  return $items;
+}
+
+/**
+ * Implements hook_init().
+ */
+function cassiopeia_student_extra_init() {
+
+  drupal_add_css(drupal_get_path('module', 'cassiopeia_student_extra') . '/css/student_extra.css');
+  drupal_add_js(drupal_get_path('module', 'cassiopeia_student_extra') . '/js/student_extra.js');
+}

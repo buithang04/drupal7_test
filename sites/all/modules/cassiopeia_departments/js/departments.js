@@ -4,7 +4,7 @@
     $('.btn-delete-departments').click(function() {
       var departmentId = $(this).data('id');
       var departmentName = $(this).data('name');
-      if (confirm('Bạn có chắc muốn xóa phòng ban "' + departmentName + '" không?')) {
+      if (confirm('Bạn có chắc muốn xóa phòng ban "' + departmentName + '" không? , Khi bạn xóa đồng nghĩa việc xóa tất cả nhân viên phòng ban đó.')) {
         window.location.href = '/departments/delete/' + departmentId;
       }
     });

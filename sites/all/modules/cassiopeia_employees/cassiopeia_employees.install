@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function cassiopeia_employees_schema() {
+  $schema = [];
+
+  $schema['employees'] = [
+    'description' => 'Stores employee information linked to departments.',
+    'fields' => [
+      'employee_id' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'employee_name' => [
+        'type' => 'varchar',
+        'length' => 100,
+        'not null' => TRUE,
+      ],
+      'position' => [
+        'type' => 'varchar',
+        'length' => 100,
+        'not null' => TRUE,
+      ],
+      'department_id' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['employee_id'],
+    'indexes' => [
+      'department_id_idx' => ['department_id'],
+    ],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Update function to create the employees table if not exists.
+ */
+function cassiopeia_employees_update_1() {
+  $schema = cassiopeia_employees_schema();
+
+  $_transaction = db_transaction();
+  try {
+    if (!db_table_exists('employees')) {
+      db_create_table('employees', $schema['employees']);
+    }
+  }
+  catch (Exception $e) {
+    watchdog('cassiopeia_employees', 'Update 1 failed: @message', ['@message' => $e->getMessage()], WATCHDOG_ERROR);
+    $_transaction->rollback();
+    throw $e; 
+  }
+}

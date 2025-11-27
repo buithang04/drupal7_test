@@ -1,0 +1,132 @@
+.employees-wrapper {
+  margin: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.employees-wrapper h1 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #333;
+}
+
+.btn-green {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.btn-green:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+}
+
+.btn-green .fa {
+  margin-right: 6px;
+}
+
+.employees-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.employees-table th,
+.employees-table td {
+  border: 1px solid #ddd;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+.employees-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+
+.employees-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.employees-table tbody tr:hover {
+  background-color: #e9ecef;
+}
+
+
+.btn-edit-employee1,
+.btn-delete-employee {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  margin-right: 5px;
+  transition: all 0.2s ease;
+}
+
+.btn-edit-employee1:hover {
+  color: #007bff;
+  transform: scale(1.2);
+}
+
+.btn-delete-employee:hover {
+  color: #dc3545;
+  transform: scale(1.2);
+}
+
+
+#addemployee.in {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-dialog {
+  max-width: 500px;
+}
+
+.modal-content {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.modal-header {
+  background-color: #28a745;
+  color: #fff;
+  border-bottom: none;
+}
+
+.modal-header .close {
+  color: #fff;
+  opacity: 1;
+}
+
+.modal-title {
+  font-size: 20px;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+
+.modal-content button[type=submit] {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal-content button[type=submit]:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+}

@@ -1,0 +1,28 @@
+<?php
+module_load_include('inc', 'cassiopeia_employees', 'cassiopeia_employees');
+function cassiopeia_employees_menu() {
+  $items = array();
+
+  $items['quan-ly-nhan-vien'] = array(
+    'title' => 'Quản lý nhân viên',
+    'page callback' => 'cassiopeia_employees_list',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'cassiopeia_employees.inc',
+  );
+  
+
+    $items['employees/delete/%'] = array(
+    'title' => 'Delete nhân viên',
+    'page callback' => 'cassiopeia_employees_delete',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'cassiopeia_employees.inc',
+  );
+
+
+
+
+  return $items;
+}

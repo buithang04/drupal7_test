@@ -42,7 +42,7 @@
   max-width: 500px;
 }
 
-/* Modal header */
+
 .modal-header {
   background-color: #ffffff;
   padding: 10px 15px;
@@ -54,7 +54,7 @@
   line-height: 1;
 }
 
-/* Form trong modal */
+
 .student-extra-form-wrapper {
   padding: 10px 0;
 }

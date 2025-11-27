@@ -1,0 +1,27 @@
+<?php
+function cassiopeia_departments_menu() {
+  $items = array();
+
+  $items['quan-ly-phong-ban'] = array(
+    'title' => 'Quản lý phòng ban',
+    'page callback' => 'cassiopeia_departments_list',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'cassiopeia_departments.inc',
+  );
+  
+
+    $items['departments/delete/%'] = array(
+    'title' => 'Delete phòng ban',
+    'page callback' => 'cassiopeia_departments_delete',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'cassiopeia_departments.inc',
+  );
+
+
+
+
+  return $items;
+}

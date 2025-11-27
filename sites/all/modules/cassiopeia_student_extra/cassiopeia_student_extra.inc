@@ -68,6 +68,34 @@ function cassiopeia_student_extra_form($form, &$form_state, $student_id = 0) {
       '#attributes'=>['placeholder'=>'Nhập địa chỉ'],
     ];
 
+    $form['wrapper']['father_name'] = [
+      '#type'=>'textfield',
+      '#title'=>t('Tên Bố'),
+      '#default_value'=>$extra['father_name']??'',
+      '#attributes'=>['placeholder'=>'Nhập tên Bố'],
+    ];
+
+    $form['wrapper']['father_phone'] = [
+      '#type'=>'textfield',
+      '#title'=>t('SĐT Bố'),
+      '#default_value'=>$extra['father_phone']??'',
+      '#attributes'=>['placeholder'=>'Nhập SĐT Bố'],
+    ];
+
+    $form['wrapper']['mother_name'] = [
+      '#type'=>'textfield',
+      '#title'=>t('Tên mẹ'),
+      '#default_value'=>$extra['mother_name']??'',
+      '#attributes'=>['placeholder'=>'Nhập tên mẹ'],
+    ];
+
+    $form['wrapper']['mother_phone'] = [
+      '#type'=>'textfield',
+      '#title'=>t('SĐT mẹ'),
+      '#default_value'=>$extra['mother_phone']??'',
+      '#attributes'=>['placeholder'=>'Nhập SĐT mẹ'],
+    ];
+
 $form['wrapper']['avatar'] = [
   '#type' => 'managed_file',
   '#title' => t('Avatar'),
@@ -79,33 +107,7 @@ $form['wrapper']['avatar'] = [
  '#default_value' => !empty($extra['avatar_fid']) ? (int)$extra['avatar_fid'] : NULL,
 
 ];
-$form['wrapper']['father_name'] = [
-  '#type'=>'textfield',
-  '#title'=>t('Tên cha'),
-  '#default_value'=>$extra['father_name']??'',
-  '#attributes'=>['placeholder'=>'Nhập tên cha'],
-];
 
-$form['wrapper']['father_phone'] = [
-  '#type'=>'textfield',
-  '#title'=>t('SĐT cha'),
-  '#default_value'=>$extra['father_phone']??'',
-  '#attributes'=>['placeholder'=>'Nhập SĐT cha'],
-];
-
-$form['wrapper']['mother_name'] = [
-  '#type'=>'textfield',
-  '#title'=>t('Tên mẹ'),
-  '#default_value'=>$extra['mother_name']??'',
-  '#attributes'=>['placeholder'=>'Nhập tên mẹ'],
-];
-
-$form['wrapper']['mother_phone'] = [
-  '#type'=>'textfield',
-  '#title'=>t('SĐT mẹ'),
-  '#default_value'=>$extra['mother_phone']??'',
-  '#attributes'=>['placeholder'=>'Nhập SĐT mẹ'],
-];
 
   $form['wrapper']['submit'] = [
     '#type'=>'submit',

@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function cassiopeia_departments_schema() {
+  $schema = [];
+
+  $schema['departments'] = [
+    'description' => 'Stores department information.',
+    'fields' => [
+      'department_id' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'department_name' => [
+        'type' => 'varchar',
+        'length' => 100,
+        'not null' => TRUE,
+      ],
+      'department_desc' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+    ],
+    
+    'unique keys' => [
+        'department_name_unique' => ['department_name'],
+  ],
+    'primary key' => ['department_id'],
+  ];
+
+  return $schema;
+}
+
+function cassiopeia_departments_update_3() {
+  $schema = cassiopeia_departments_schema();
+
+  $_transaction = db_transaction();
+  try {
+
+    if (!db_table_exists('departments')) {
+      db_create_table('departments', $schema['departments']);
+    }
+  }
+  catch (Exception $e) {
+    watchdog('cassiopeia_departments', 'Update 3 failed: @message', ['@message' => $e->getMessage()], WATCHDOG_ERROR);
+    $_transaction->rollback();
+    throw $e; 
+  }
+
+}

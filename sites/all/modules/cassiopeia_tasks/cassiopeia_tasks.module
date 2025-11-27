@@ -1,0 +1,26 @@
+<?php
+module_load_include('inc', 'cassiopeia_tasks', 'cassiopeia_tasks');
+function cassiopeia_tasks_menu() {
+  $items = array();
+
+  $items['quan-ly-du-an'] = array(
+    'title' => 'Quản lý dự án',
+    'page callback' => 'cassiopeia_tasks_list',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'cassiopeia_tasks.inc',
+  );
+  
+
+    $items['tasks/delete/%'] = array(
+    'title' => 'Delete dự án',
+    'page callback' => 'cassiopeia_tasks_delete',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'cassiopeia_tasks.inc',
+  );
+
+
+  return $items;
+}

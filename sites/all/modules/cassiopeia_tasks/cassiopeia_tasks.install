@@ -1,0 +1,61 @@
+<?php
+
+function cassiopeia_tasks_schema() {
+  $schema = [];
+
+  $schema['tasks'] = [
+    'description' => 'Stores task information.',
+    'fields' => [
+      'task_id' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'task_name' => [
+        'type' => 'varchar',
+        'length' => 150,
+        'not null' => TRUE,
+      ],
+      'task_desc' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ],
+      'department_id' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['task_id'],
+    'foreign keys' => [
+      'tasks_department_fk' => [
+        'table' => 'departments',
+        'columns' => ['department_id' => 'department_id'],
+      ],
+    ],
+  ];
+
+  return $schema;
+}
+
+
+
+/**
+ * Update function to create the tasks table if not exists.
+ */
+function cassiopeia_tasks_update_2() {
+  $schema = cassiopeia_tasks_schema();
+
+  $_transaction = db_transaction();
+  try {
+    if (!db_table_exists('tasks')) {
+      db_create_table('tasks', $schema['tasks']);
+    }
+  }
+  catch (Exception $e) {
+    watchdog('cassiopeia_tasks', 'Update 1 failed: @message', ['@message' => $e->getMessage()], WATCHDOG_ERROR);
+    $_transaction->rollback();
+    throw $e; 
+  }
+}

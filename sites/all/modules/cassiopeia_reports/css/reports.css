@@ -28,3 +28,84 @@
   background: #eef6ff;
   transition: 0.2s;
 }
+
+.report-employee-task {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+}
+
+
+.report-employee-task h2 {
+  text-align: center;
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 25px;
+  color: #2a4d69;
+}
+
+
+.department-block {
+  background: #ffffff;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: box-shadow 0.3s;
+}
+
+.department-block:hover {
+  box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+}
+
+
+.department-block h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #1d3b53;
+}
+
+
+.task-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.task-item {
+  padding: 12px 15px;
+  background: #f9fafc;
+  border-left: 4px solid #3e8ed0;
+  margin-bottom: 12px;
+  border-radius: 6px;
+}
+
+.task-item strong {
+  color: #2a4d69;
+}
+
+.employee-list {
+  list-style: none;
+  padding-left: 25px;
+  margin-top: 8px;
+}
+
+.employee-item {
+  padding: 5px 0;
+  border-bottom: 1px dashed #cbd1d9;
+  color: #334e68;
+  font-size: 14px;
+}
+
+.employee-item:last-child {
+  border-bottom: none;
+}
+
+.report-employee-task hr {
+  border: 0;
+  border-top: 1px solid #e0e0e0;
+  margin: 20px 0;
+}

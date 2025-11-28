@@ -32,7 +32,7 @@ function cassiopeia_tasks_delete($task_id) {
 
 }
 
-function cassiopeia_tasks_department_deleted($department_id){
+function cassiopeia_tasks_department_delete($department_id){
       db_delete('tasks')
     ->condition('department_id', $department_id)
     ->execute();

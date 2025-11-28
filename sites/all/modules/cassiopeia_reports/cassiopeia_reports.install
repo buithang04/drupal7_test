@@ -66,6 +66,21 @@ function cassiopeia_reports_schema() {
     ),
   );
 
+    $schema['report_employee_task'] = [
+    'description' => 'Stores tasks and employees grouped by department.',
+    'fields' => [
+      'id' => ['type' => 'serial', 'not null' => TRUE],
+      'department_id' => ['type' => 'int', 'not null' => TRUE],
+      'department_name' => ['type' => 'varchar', 'length' => 255, 'not null' => TRUE],
+      'task_ids' => ['type' => 'text', 'not null' => FALSE],
+      'task_names' => ['type' => 'text', 'not null' => FALSE],
+      'employee_ids' => ['type' => 'text', 'not null' => FALSE],
+      'employee_names' => ['type' => 'text', 'not null' => FALSE],
+    ],
+    'primary key' => ['id'],
+    'indexes' => ['department_id' => ['department_id']],
+  ];
+
   return $schema;
 }
 
@@ -94,6 +109,23 @@ function cassiopeia_reports_schema() {
 
     if (!db_table_exists('report_count_task')) {
       db_create_table('report_count_task', $schema['report_count_task']);
+    }
+  }
+  catch (Exception $e) {
+    watchdog('cassiopeia_reports', 'Update 4 failed: @message', ['@message' => $e->getMessage()], WATCHDOG_ERROR);
+    $_transaction->rollback();
+    throw $e;
+  }
+}
+
+  function cassiopeia_reports_update_8() {
+  $schema = cassiopeia_reports_schema();
+
+  $_transaction = db_transaction();
+  try {
+
+    if (!db_table_exists('report_employee_task')) {
+      db_create_table('report_employee_task', $schema['report_employee_task']);
     }
   }
   catch (Exception $e) {

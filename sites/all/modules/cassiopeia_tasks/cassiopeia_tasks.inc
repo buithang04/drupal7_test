@@ -118,25 +118,31 @@ function cassiopeia_tasks_form_submit($form, &$form_state){
     $values = $form_state['values'];
 
     if(!empty($values['task_id']) && $values['task_id'] > 0 ){
-        db_update('tasks')
-        ->fields([
-            'task_name' => $values['task_name'],
-            'task_desc' => $values['task_desc'],
-            'department_id'=> $values['department_id'],
-        ])
+
+      $old_task = db_select('tasks', 't')
+        ->fields('t')
+        ->condition('task_id', $values['task_id'])
+        ->execute()
+        ->fetchObject();
+
+      db_update('tasks')
+        ->fields(array(
+          'task_name'     => $values['task_name'],
+          'task_desc'     => $values['task_desc'],
+          'department_id' => $values['department_id'],
+        ))
         ->condition('task_id', $values['task_id'])
         ->execute();
-        
-        drupal_set_message(t('Cập nhật dự án thành công.'));
 
-        $task = [
-            'task_id' => $values['task_id'],
-            'task_name' => $values['task_name'],
-            'task_desc' => $values['task_desc'],
-            'department_id'=> $values['department_id'],
-        ];
+      drupal_set_message(t('Cập nhật dự án thành công.'));
 
-        module_invoke_all('task_updated', $task);
+      $new_task = array(
+        'task_id'       => $values['task_id'],
+        'task_name'     => $values['task_name'],
+        'task_desc'     => $values['task_desc'],
+        'department_id' => $values['department_id'],
+      );
+      module_invoke_all('task_updated', $new_task, $old_task);
 
     } else { 
 
@@ -157,7 +163,7 @@ function cassiopeia_tasks_form_submit($form, &$form_state){
             'department_id'=> $values['department_id'],
         ];
 
-        module_invoke_all('task_add', $task);
+        module_invoke_all('task_added', $task);
     }
 
     $form_state['redirect'] = 'quan-ly-du-an';

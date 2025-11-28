@@ -10,5 +10,13 @@ function cassiopeia_reports_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  $items['bao-cao-sl-du-an'] = array(
+  'title' => 'Báo cáo số dự án theo phòng ban',
+  'page callback' => 'cassiopeia_reports_page_task_list',
+  'access arguments' => array('access content'),
+  'type' => MENU_CALLBACK,
+);
+
+
   return $items;
 }

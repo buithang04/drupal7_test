@@ -126,27 +126,38 @@ function cassiopeia_employee_form_submit($form, &$form_state){
     $values = $form_state['values'];
 
     if(!empty($values['employee_id']) && $values['employee_id'] > 0 ){
-        db_update('employees')
-        ->fields([
-            'employee_name' => $values['employee_name'],
-            'position' => $values['position'],
-            'department_id'=> $values['department_id'],
-        ])
-        ->condition('employee_id',$values['employee_id'])
-        ->execute();
-        
-        drupal_set_message(t('Cập nhật nhân viên thành công. '));
 
-    
 
-    $employee = [
-        'employee_id' => $values['employee_id'],
+      $old_employee = db_select('employees', 'e')
+      ->fields('e')
+      ->condition('employee_id', $values['employee_id'])
+      ->execute()
+      ->fetchObject();
+
+
+    db_update('employees')
+      ->fields([
         'employee_name' => $values['employee_name'],
         'position' => $values['position'],
         'department_id'=> $values['department_id'],
+      ])
+      ->condition('employee_id',$values['employee_id'])
+      ->execute();
+
+    drupal_set_message(t('Cập nhật nhân viên thành công.'));
+
+
+    $new_employee = [
+      'employee_id' => $values['employee_id'],
+      'employee_name' => $values['employee_name'],
+      'position' => $values['position'],
+      'department_id'=> $values['department_id'],
     ];
 
-    module_invoke_all('employee_updated', $employee);
+
+    module_invoke_all('employee_updated', $new_employee, $old_employee);
+
+
 
     } else { 
         $employee_id = db_insert('employees')
@@ -173,7 +184,7 @@ function cassiopeia_employee_form_submit($form, &$form_state){
 }
 
 
-function cassiopeia_employees_department_deleted($department_id){
+function cassiopeia_employees_department_delete($department_id){
       db_delete('employees')
     ->condition('department_id', $department_id)
     ->execute();

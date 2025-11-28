@@ -1,0 +1,30 @@
+.table-report {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+  background: #fff;
+}
+
+.table-report th {
+  background: #0074bd;
+  color: #fff;
+  text-align: left;
+  padding: 12px;
+  font-size: 14px;
+}
+
+.table-report td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #ddd;
+  font-size: 13px;
+}
+
+.table-report tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+.table-report tr:hover {
+  background: #eef6ff;
+  transition: 0.2s;
+}

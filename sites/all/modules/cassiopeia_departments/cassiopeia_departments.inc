@@ -21,7 +21,7 @@ function cassiopeia_departments_get_all() {
 
 function cassiopeia_departments_delete($department_id) {
 
-module_invoke_all('department_deleted', $department_id);
+module_invoke_all('department_delete', $department_id);
 
 
   db_delete('departments')

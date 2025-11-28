@@ -1,0 +1,57 @@
+<?php
+function cassiopeia_reports_schema() {
+  $schema = [];
+
+   $schema['report_count_employee'] = array(
+    'description' => 'Stores employee count per department.',
+    'fields' => array(
+      'id' => array(
+        'type'        => 'serial',
+        'unsigned'    => TRUE,
+        'not null'    => TRUE,
+      ),
+      
+      'department_id' => array(
+        'type'        => 'int',
+        'unsigned'    => TRUE,
+        'not null'    => TRUE,
+      ),
+
+      'department_name' => array(
+      'type' => 'varchar',
+      'length' => 255,
+      'not null' => TRUE,
+    ),
+      'total_employees' => array(
+        'type'        => 'int',
+        'unsigned'    => TRUE,
+        'not null'    => TRUE,
+        'default'     => 0,
+      ),
+    ),
+    'primary key' => array('id'),
+    'indexes' => array(
+      'department_id' => array('department_id'),
+    ),
+  );
+
+  return $schema;
+}
+
+  function cassiopeia_reports_update_4() {
+  $schema = cassiopeia_reports_schema();
+
+  $_transaction = db_transaction();
+  try {
+
+    if (!db_table_exists('report_count_employee')) {
+      db_create_table('report_count_employee', $schema['report_count_employee']);
+    }
+  }
+  catch (Exception $e) {
+    watchdog('cassiopeia_reports', 'Update 4 failed: @message', ['@message' => $e->getMessage()], WATCHDOG_ERROR);
+    $_transaction->rollback();
+    throw $e;
+  }
+}
+

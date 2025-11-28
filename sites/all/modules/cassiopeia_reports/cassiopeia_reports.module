@@ -1,0 +1,14 @@
+<?php
+module_load_include('inc', 'cassiopeia_reports', 'cassiopeia_reports');
+function cassiopeia_reports_menu() {
+  $items = array();
+
+  $items['bao-cao-sl-nhan-vien'] = array(
+    'title' => 'Báo cáo số lượng nhân viên theo phòng ban',
+    'page callback' => 'cassiopeia_reports_page_list',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}

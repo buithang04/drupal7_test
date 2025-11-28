@@ -54,7 +54,7 @@ function cassiopeia_tasks_update_2() {
     }
   }
   catch (Exception $e) {
-    watchdog('cassiopeia_tasks', 'Update 1 failed: @message', ['@message' => $e->getMessage()], WATCHDOG_ERROR);
+    watchdog('cassiopeia_tasks', 'Update 2 failed: @message', ['@message' => $e->getMessage()], WATCHDOG_ERROR);
     $_transaction->rollback();
     throw $e; 
   }

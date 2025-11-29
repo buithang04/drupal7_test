@@ -49,6 +49,36 @@ $articles = cassiopeia_get_items_by_conditions($conditions,"article","node");
                 </ul>
             </li>
 
+            <li class="expanded <?php if(!empty($arg[0]) && $arg[0]=="quan-ly-phong-ban") echo "active"; ?>">
+                <a href="/quan-ly-phong-ban" class="sm-event-none">
+                    <span class="icon material-icons-outlined"><i class="fa-solid fa-list"></i></span>
+                    <span>Hệ thống quản lý công ty</span>
+                    <div class="mb-none pull-right-container">
+                        <i class="fa fa-angle-down"></i>
+                    </div>
+                </a>
+                <ul class="mb-none">
+                    <li>
+                        <a class="<?php if(!empty($arg[0]) && $arg[0]=="quan-ly-phong-ban") echo "active"; ?>" href="/quan-ly-phong-ban">Tất cả phòng ban</a>
+                    </li>
+                    <li>
+                        <a class="<?php if(!empty($arg[0]) && $arg[0]=="quan-ly-nhan-vien") echo "active"; ?>" href="/quan-ly-nhan-vien">Tất cả nhân viên</a>
+                    </li>
+                    <li>
+                        <a class="<?php if(!empty($arg[0]) && $arg[0]=="quan-ly-du-an") echo "active"; ?>" href="/quan-ly-du-an">Tất cả dư án</a>
+                    </li>
+                    <li>
+                        <a class="<?php if(!empty($arg[0]) && $arg[0]=="bao-cao-sl-nhan-vien") echo "active"; ?>" href="/bao-cao-sl-nhan-vien">Báo cáo nhân viên in một ban</a>
+                    </li>
+                    <li>
+                        <a class="<?php if(!empty($arg[0]) && $arg[0]=="bao-cao-sl-du-an") echo "active"; ?>" href="/bao-cao-sl-du-an">Báo cáo dự án in một ban</a>
+                    </li>
+                    <li>
+                        <a class="<?php if(!empty($arg[0]) && $arg[0]=="bao-cao-nv-theo-du-an") echo "active"; ?>" href="/bao-cao-nv-theo-du-an">Báo cáo nhân viên theo dự án</a>
+                    </li>
+                </ul>
+            </li>
+
             <li class="expanded <?php if(!empty($arg[0]) && $arg[0]=="quan-ly-keywords") echo "active"; ?>">
                 <a href="/quan-ly-keywords" class="sm-event-none">
                     <span class="icon material-icons-outlined">spellcheck</span>

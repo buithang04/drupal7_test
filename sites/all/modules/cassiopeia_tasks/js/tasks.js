@@ -4,7 +4,7 @@
     $('.btn-delete-task').click(function() {
       var taskId = $(this).data('id');
       var taskName = $(this).data('name');
-      if (confirm('Bạn có chắc muốn xóa công việc "' + taskName + '" không?')) {
+      if (confirm('Bạn có chắc muốn xóa dự án "' + taskName + '" không?')) {
         window.location.href = '/tasks/delete/' + taskId;
       }
     });
@@ -22,13 +22,13 @@
         $("#edit-task-desc").val(desc);
         $("#edit-task-department").val(department).trigger('change');
 
-        $("#addtask .modal-title").text("Cập nhật công việc");
+        $("#addtask .modal-title").text("Cập nhật dự án");
         $("#addtask .form-buttons button").html("<i class='fa fa-check'></i> Cập nhật");
         $("#addtask button[type=submit]").val("Cập nhật");
         $("#addtask").modal("show");
 
         $("#addtask form").off("submit").on("submit", function(e) {
-            if (!confirm("Vui lòng kiểm tra lại thông tin công việc trước khi cập nhật!")) {
+            if (!confirm("Vui lòng kiểm tra lại thông tin dự án trước khi cập nhật!")) {
                 e.preventDefault();
                 return false;
             }
@@ -44,7 +44,7 @@
 
         $("#addtask").css({ "display": "flex", "align-items": "center" });
         $("#addtask").modal("show");
-        $("#addtask .modal-title").text("Thêm mới công việc");
+        $("#addtask .modal-title").text("Thêm mới dự án");
         $("#addtask button[type=submit]").val("Thêm mới");
     });
 

@@ -1,6 +1,4 @@
 <?php
-
-
 function cassiopeia_reports_page_list() {
   $records = cassiopeia_reports_get_all();
 
@@ -444,6 +442,24 @@ function _cassiopeia_reports_update_task_count($department_id, $amount = 1) {
     ->execute();
 }
 
+function cassiopeia_reports_page_employee_task() {
+  $records = db_select('report_employee_task', 'r')
+    ->fields('r')
+    ->orderBy('department_id', 'ASC')
+    ->execute()
+    ->fetchAll();
+
+  return _cassiopeia_render_theme(
+    "module",
+    "cassiopeia_reports",
+    "templates/page-report-employee-task.tpl.php",
+    array(
+      'records'     => $records,
+    )
+  );
+}
+
+
 /* =========================
    CSV helpers (simple & parallel)
    ========================= */
@@ -501,20 +517,4 @@ function csv_update_name($ids, $names, $id, $new_name) {
 }
 
 
-function cassiopeia_reports_page_employee_task() {
 
-  $records = db_select('report_employee_task', 'r')
-    ->fields('r')
-    ->orderBy('department_id', 'ASC')
-    ->execute()
-    ->fetchAll();
-
-  return _cassiopeia_render_theme(
-    "module",
-    "cassiopeia_reports",
-    "templates/page-report-employee-task.tpl.php",
-    array(
-      'records' => $records,
-    )
-  );
-}

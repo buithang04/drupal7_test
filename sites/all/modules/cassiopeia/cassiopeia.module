@@ -161,6 +161,55 @@ function cassiopeia_menu() {
         'access callback' => 'cassiopeia_user_accept',
         'file'              => 'cassiopeia.inc',
     );
+// 
+// 
+// 
+    $items['quan-ly-phong-ban'] = array(
+        'title' => 'Quản lý phòng ban',
+        'page callback' => 'cassiopeia_departments_list',
+        'access arguments' => array('access content'),
+        'type' => MENU_CALLBACK,
+        'file' => 'cassiopeia_departments.inc',
+    );
+    $items['quan-ly-nhan-vien'] = array(
+        'title' => 'Quản lý nhân viên',
+        'page callback' => 'cassiopeia_employees_list',
+        'access arguments' => array('access content'),
+        'type' => MENU_CALLBACK,
+        'file' => 'cassiopeia_employees.inc',
+    );
+    $items['quan-ly-du-an'] = array(
+        'title' => 'Quản lý dự án',
+        'page callback' => 'cassiopeia_tasks_list',
+        'access arguments' => array('access content'),
+        'type' => MENU_CALLBACK,
+        'file' => 'cassiopeia_tasks.inc',
+    );
+
+
+    $items['bao-cao-sl-nhan-vien'] = array(
+    'title' => 'Báo cáo số lượng nhân viên theo phòng ban',
+    'page callback' => 'cassiopeia_reports_page_list',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+    $items['bao-cao-sl-du-an'] = array(
+  'title' => 'Báo cáo số dự án theo phòng ban',
+  'page callback' => 'cassiopeia_reports_page_task_list',
+  'access arguments' => array('access content'),
+  'type' => MENU_CALLBACK,
+);
+
+ $items['bao-cao-nv-theo-du-an'] = array(
+    'title' => 'Báo cáo nhân viên theo dự án',
+    'page callback' => 'cassiopeia_reports_page_employee_task',
+    'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+// 
+// 
+// 
 
     $items['quan-ly-backlink/du-an/%project_id'] = array(
         'type'              => MENU_CALLBACK,

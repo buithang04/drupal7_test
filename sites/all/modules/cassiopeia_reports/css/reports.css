@@ -1,3 +1,5 @@
+
+
 .table-report {
   width: 100%;
   border-collapse: collapse;
@@ -12,7 +14,21 @@
   text-align: left;
   padding: 12px;
   font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
 }
+
+.table-report th.sort::after {
+  content: "⇅";
+  position: absolute;
+  right: 10px;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.table-report th.sort.asc::after { content: "↑"; }
+.table-report th.sort.desc::after { content: "↓"; }
 
 .table-report td {
   padding: 10px 12px;
@@ -20,14 +36,63 @@
   font-size: 13px;
 }
 
-.table-report tr:nth-child(even) {
-  background: #f9f9f9;
-}
-
+.table-report tr:nth-child(even) { background: #f9f9f9; }
 .table-report tr:hover {
   background: #eef6ff;
   transition: 0.2s;
 }
+
+.filter-box { margin: 20px 0 10px 0; }
+
+.search-input {
+  width: 250px;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.search-input:focus {
+  border-color: #0074bd;
+  box-shadow: 0 0 5px rgba(0, 116, 189, 0.3);
+}
+
+.filter-letters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.filter-letter {
+  padding: 8px 12px;
+  background: #e9eef5;
+  border: 1px solid #c5ced8;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #2a3d5c;
+  transition: 0.2s;
+  min-width: 32px;
+  text-align: center;
+}
+
+.filter-letter:hover {
+  background: #d9e4f2;
+  border-color: #a9b8c7;
+}
+
+.filter-letter.active {
+  background: #0074bd;
+  color: #fff;
+  border-color: #005a94;
+}
+
+
+
 
 .report-employee-task {
   max-width: 900px;
@@ -35,7 +100,6 @@
   padding: 10px;
   font-family: Arial, sans-serif;
 }
-
 
 .report-employee-task h2 {
   text-align: center;
@@ -46,7 +110,7 @@
 }
 
 
-.department-block {
+.report-employee-task .department-block {
   background: #ffffff;
   padding: 20px;
   margin-bottom: 25px;
@@ -56,12 +120,11 @@
   transition: box-shadow 0.3s;
 }
 
-.department-block:hover {
+.report-employee-task .department-block:hover {
   box-shadow: 0 4px 15px rgba(0,0,0,0.12);
 }
 
-
-.department-block h3 {
+.report-employee-task .department-block h3 {
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 15px;
@@ -69,13 +132,13 @@
 }
 
 
-.task-list {
+.report-employee-task .task-list {
   list-style: none;
   padding-left: 0;
   margin: 0;
 }
 
-.task-item {
+.report-employee-task .task-item {
   padding: 12px 15px;
   background: #f9fafc;
   border-left: 4px solid #3e8ed0;
@@ -83,24 +146,25 @@
   border-radius: 6px;
 }
 
-.task-item strong {
+.report-employee-task .task-item strong {
   color: #2a4d69;
 }
 
-.employee-list {
+
+.report-employee-task .employee-list {
   list-style: none;
   padding-left: 25px;
   margin-top: 8px;
 }
 
-.employee-item {
+.report-employee-task .employee-item {
   padding: 5px 0;
   border-bottom: 1px dashed #cbd1d9;
   color: #334e68;
   font-size: 14px;
 }
 
-.employee-item:last-child {
+.report-employee-task .employee-item:last-child {
   border-bottom: none;
 }
 

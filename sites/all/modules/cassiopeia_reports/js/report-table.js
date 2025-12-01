@@ -50,7 +50,7 @@
     $(this).addClass("active");
 
     $(".table-report tr").each(function (i) {
-      if (i === 0) return; // header
+      if (i === 0) return; 
 
       let name = $(this).find("[data-department]").text().trim();
 

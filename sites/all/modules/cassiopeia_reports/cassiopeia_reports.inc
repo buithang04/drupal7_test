@@ -443,11 +443,16 @@ function _cassiopeia_reports_update_task_count($department_id, $amount = 1) {
 }
 
 function cassiopeia_reports_page_employee_task() {
-  $records = db_select('report_employee_task', 'r')
+  $items_per_page = 5;
+
+  $query = db_select('report_employee_task', 'r')
     ->fields('r')
-    ->orderBy('department_id', 'ASC')
-    ->execute()
-    ->fetchAll();
+    ->orderBy('department_id', 'ASC');
+
+  $pager = $query->extend('PagerDefault')->limit($items_per_page);
+
+  // Lấy dữ liệu
+  $records = $pager->execute()->fetchAll();
 
   return _cassiopeia_render_theme(
     "module",

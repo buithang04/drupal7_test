@@ -1,21 +1,40 @@
 (function ($) {
-  Drupal.behaviors.cassiopeiaReports = {
-    attach: function (context, settings) {
 
-      $(".report-filter select", context).once("filter-change").on("change", function () {
-        $(this).closest("form").submit();
-      });
+  $("#search-report").on("keyup", function () {
+    let keyword = $(this).val().toLowerCase();
+
+    $(".department-block").each(function () {
+      let text = $(this).text().toLowerCase();
+      $(this).toggle(text.includes(keyword));
+    });
+  });
+
+  $(".filter-letter").click(function () {
+    let letter = $(this).data("letter");
+
+    $(".filter-letter").removeClass("active");
+    $(this).addClass("active");
+
+    $(".department-block").each(function () {
+      let name = $(this).data("department");
+
+      if (letter === "all") {
+        $(this).show();
+      } else {
+        $(this).toggle(name.startsWith(letter.toLowerCase()));
+      }
+    });
+  });
+
+  $(".accordion-header").click(function () {
+    $(this).toggleClass("open");
+    $(this).next(".accordion-content").slideToggle(200);
+  });
 
 
-      $(".btn-reset", context).once("reset-btn").on("click", function (e) {
-        e.preventDefault();
-        window.location.href = window.location.pathname;
-      });
+  $(".task-header").click(function () {
+    $(this).toggleClass("open");
+    $(this).next(".task-content").slideToggle(200);
+  });
 
-      $(".task-item > strong", context).once("toggle-emp").css("cursor", "pointer").on("click", function () {
-        $(this).siblings(".employee-list").slideToggle(200);
-      });
-
-    }
-  };
 })(jQuery);

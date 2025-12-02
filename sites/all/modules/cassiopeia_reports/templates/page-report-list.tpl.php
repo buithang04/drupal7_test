@@ -10,7 +10,6 @@ drupal_add_js(drupal_get_path('module', 'cassiopeia_reports') . '/js/report-tabl
     <input type="text" id="search" placeholder="Tìm phòng ban..." class="search-input">
   </div>
 
-
   <div class="filter-letters">
   <?php foreach (range('A','Z') as $char): ?>
     <button class="filter-letter" data-letter="<?php print $char; ?>">

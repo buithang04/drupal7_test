@@ -13,7 +13,7 @@ drupal_add_js(drupal_get_path('module', 'cassiopeia_reports') . '/js/report-empl
   </div>
 
   <!-- LỌC THEO CHỮ CÁI -->
-  <div class="letter-filter">
+  <div class="filter-letters">
     <span class="filter-letter active" data-letter="all">Tất cả</span>
     <?php foreach (range('A', 'Z') as $char): ?>
       <span class="filter-letter" data-letter="<?php print $char; ?>"><?php print $char; ?></span>

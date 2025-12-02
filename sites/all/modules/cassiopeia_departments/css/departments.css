@@ -6,25 +6,27 @@
 .departments-wrapper h1 {
   margin-bottom: 20px;
   font-size: 28px;
-  color: #333;
+  color: #1b3e2f; 
 }
 
 .btn-green {
-  background-color: #28a745;
+  background-color: #28a745; 
   color: #fff;
   border: none;
   padding: 10px 18px;
   font-size: 16px;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
 }
 
 .btn-green:hover {
   background-color: #218838;
   transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
 }
 
 .btn-green .fa {
@@ -36,27 +38,32 @@
   border-collapse: collapse;
   margin-top: 15px;
   background: #fff;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .departments-table th,
 .departments-table td {
-  border: 1px solid #ddd;
-  padding: 10px 12px;
+  border: 1px solid #dee2e6;
+  padding: 12px 15px;
   text-align: left;
 }
 
 .departments-table th {
-  background-color: #f8f9fa;
+  background-color: #1b3e2f;
+  color: #fff;
   font-weight: 600;
+  font-size: 14px;
 }
 
 .departments-table tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: #f2f7f2;
 }
 
 .departments-table tbody tr:hover {
-  background-color: #e9ecef;
+  background-color: #e0f2e9;
+  transition: 0.3s;
 }
 
 .btn-edit-department1,
@@ -70,12 +77,12 @@
 }
 
 .btn-edit-department1:hover {
-  color: #007bff;
+  color: #1b3e2f;
   transform: scale(1.2);
 }
 
 .btn-delete-departments:hover {
-  color: #dc3545;
+  color: #dc3545; 
   transform: scale(1.2);
 }
 
@@ -92,6 +99,7 @@
 .modal-content {
   border-radius: 10px;
   overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .modal-header {
@@ -117,13 +125,16 @@
   background-color: #28a745;
   color: #fff;
   border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
+  padding: 10px 18px;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 15px;
   transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
 }
 
 .modal-content button[type=submit]:hover {
   background-color: #218838;
   transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
 }
